@@ -117,6 +117,10 @@ user@computer:$ roslaunch platform mapping.launch
 user@computer:$ roslaunch console mapping.launch
 ```
 
+```console
+user@computer:$ rosrun map_server map_saver -f <name_for_your_map>
+```
+
 ### Advanced navigation using the TEB local planner
 
 ```console
