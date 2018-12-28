@@ -98,7 +98,7 @@ user@computer:$ bash ./tools/install_source_only.sh <your_workspace_name>
 
 ### Example
 
-If you want to install only the F1/10 package and its dependencies, and your computer run Ubuntu 18.04 and ROS-Melodic with a default workspace under catkin_ws, you would have to execute:
+If you want to install only the F1/10 package and its dependencies, and your computer runs Ubuntu 18.04 and ROS-Melodic with a default workspace under catkin_ws, you would have to execute:
 ```console
 user@computer:$ bash ./tools/install_source_with_dependencies.sh catkin_ws melodic
 ```
