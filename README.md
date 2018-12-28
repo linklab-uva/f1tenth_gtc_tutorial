@@ -49,3 +49,4 @@ The testbed contains the following hardware:
 Detailed instructions on how to assemble the testbed are available on f1tenth.org
 
 Test: <a href="http://google.com/" target="_blank">Hello, world!</a>
+[link](http://google.com/){:target="_blank"}
