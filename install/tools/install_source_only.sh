@@ -4,41 +4,8 @@
 
 set -x
 
-function usage {
-    # Print out usage of this script.
-    echo >&2 "usage: $0 [catkin workspace name (default:catkin_ws)] [ROS distro (default: indigo)"
-    echo >&2 "          [-h|--help] Print help message."
-    exit 0
-}
-# Parse command line. If the number of argument differs from what is expected, call `usage` function.
-OPT=`getopt -o h -l help -- $*`
-if [ $# != 2 ]; then
-    usage
-fi
-eval set -- $OPT
-while [ -n "$1" ] ; do
-    case $1 in
-        -h|--help) usage ;;
-        --) shift; break;;
-        *) echo "Unknown option($1)"; usage;;
-    esac
-done
-
 name_catkinws=$1
 name_catkinws=${name_catkinws:="catkin_ws"}
-name_ros_distro=$2
-name_ros_distro=${name_ros_distro:="indigo"}
-
-version=`lsb_release -sc`
-
-echo "[Checking the ubuntu version]"
-case $version in
-  "saucy" | "trusty" | "vivid" | "wily" | "xenial")
-  ;;
-  *)
-    echo "ERROR: This script will only work on Ubuntu Saucy(13.10) / Trusty(14.04) / Vivid / Wily / Xenial. Exit."
-    exit 0
-esac
 
 echo "[Setting the ROS evironment]"
 sh -c "echo \"source /opt/ros/$name_ros_distro/setup.bash\" >> ~/.bashrc"
