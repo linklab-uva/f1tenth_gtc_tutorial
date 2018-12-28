@@ -12,7 +12,8 @@ Few things focus the mind and excite the spirit like a competition. In the early
 
 ### Highlights from the 3rd F1/10 Autonomous Racing Competition
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/VlE2Wb_XhoQ?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[link name](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#links){:target="_blank"}
+[![f1tenth_italy](http://img.youtube.com/vi/VlE2Wb_XhoQ/0.jpg)](http://www.youtube.com/watch?v=VlE2Wb_XhoQ "F1/10 Autonomous Racing Competition 2018 - Torino, Italy")
 
 ## Tutorial Summary:
 - F1/10 Gazebo racing simulator 
