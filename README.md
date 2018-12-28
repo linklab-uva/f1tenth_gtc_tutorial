@@ -82,18 +82,25 @@ This option installs ROS along with the dependent packages necessary to run the 
 user@computer:$ bash ./tools/install_full.sh <your_workspace_name> <your_preferred_ROS_distribution>
 ```
 
-### 1. Install F1/10 package and its dependencies
+### 2. Install F1/10 package and its dependencies
 
 This option installs the F1/10 package and the ROS navigation packages necessary to run locally on your machine. To do this, open a terminal and execute
 ```console
 user@computer:$ bash ./tools/install_source_with_dependencies.sh <your_workspace_name> <your_prefered_ROS_distribution>
 ```
 
-### 1. Install only the F1/10 package
+### 3. Install only the F1/10 package
 
 This option installs only the F1/10 packages. Do this only if you want to experiment with algorithms that are not part of this course. To do this, open a terminal and execute
 ```console
 user@computer:$ bash ./tools/install_source_only.sh <your_workspace_name>
+```
+
+### Example
+
+If you want to install only the F1/10 package and its dependencies, and your computer run Ubuntu 18.04 and ROS-Melodic with a default workspace under catkin_ws, you would have to execute:
+```console
+user@computer:$ bash ./tools/install_source_with_dependencies.sh catkin_ws melodic
 ```
 
 ## Getting Started
