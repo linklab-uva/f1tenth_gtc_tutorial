@@ -12,8 +12,7 @@ Few things focus the mind and excite the spirit like a competition. In the early
 
 ### Highlights from the 3rd F1/10 Autonomous Racing Competition
 
-[Link to Video - http://www.youtube.com/watch?v=VlE2Wb_XhoQ](http://www.youtube.com/watch?v=VlE2Wb_XhoQ)
-<a href="http://www.youtube.com/watch?v=VlE2Wb_XhoQ" target="_blank"> Link </a>
+[link](https://google.org){target="_blank"}
 
 [![f1tenth_italy](http://img.youtube.com/vi/VlE2Wb_XhoQ/0.jpg)](http://www.youtube.com/watch?v=VlE2Wb_XhoQ "F1/10 Autonomous Racing Competition 2018 - Torino, Italy")
 
