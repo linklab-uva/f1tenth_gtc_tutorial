@@ -1,5 +1,4 @@
-# F1/10 Autonomous Racing 
-## Instructor led training 
+# F1/10 Autonomous Racing | Instructor led training ![alt text](assets/images/f110logo.png "f1tenth GTC")
 ## Nvidia GTC 2019 | University of Virginia
 
 ![](assets/images/banner.jpg)
