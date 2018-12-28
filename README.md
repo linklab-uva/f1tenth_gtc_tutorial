@@ -11,8 +11,8 @@ F1/10 is an international autonomous racing competition which exposes the partic
 Few things focus the mind and excite the spirit like a competition. In the early days of racing, competitors first had to build their vehicles before they could race them. It was thus as much an engineering as a racing competition. We want to rekindle that competitive spirit for autonomous systems.
 
 ### Highlights from the 3rd F1/10 Autonomous Racing Competition
-[![f1tenth_italy](http://img.youtube.com/vi/VlE2Wb_XhoQ/0.jpg)](http://www.youtube.com/watch?v=VlE2Wb_XhoQ "F1/10 Autonomous Racing Competition 2018 - Torino, Italy")
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/VlE2Wb_XhoQ?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Tutorial Summary:
 - F1/10 Gazebo racing simulator 
@@ -48,5 +48,3 @@ The testbed contains the following hardware:
 
 Detailed instructions on how to assemble the testbed are available on f1tenth.org
 
-Test: <a href="http://google.com/" target="_blank">Hello, world!</a>
-[link](http://google.com/){:target="_blank"}
