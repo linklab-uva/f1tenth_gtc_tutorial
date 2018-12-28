@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<!--
+2018 Varundev Suresh Babu (University of Virginia)
+                MIT License
+-->
+
+<launch>
+  <!-- Teleop Node -->
+  <node        name           = "keyboard_teleop"
+               pkg            = "console"
+               type           = "keyboard_teleop.py"/>
+</launch>

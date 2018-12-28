@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<!--
+2018 Varundev Suresh Babu (University of Virginia)
+            MIT License
+-->
+
+<launch>
+  <!-- Visualisation -->
+  <node        name           = "rviz"
+               pkg            = "rviz"
+               type           = "rviz"
+               args           = "-d $(find console)/config/display/navigation/navigation.rviz"/>
+</launch>

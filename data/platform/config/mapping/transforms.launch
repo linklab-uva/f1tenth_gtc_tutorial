@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<!--
+2018 Varundev Suresh Babu (University of Virginia)
+                MIT License
+-->
+
+<launch>
+  <!-- World -> Map Transform -->
+  <node        name           = "map_world_link"
+               pkg            = "tf"
+               type           = "static_transform_publisher"
+               args           = "1.0 0.0 0.0 0.0 0.0 0.0 world map 100"/>
+  <!-- Base_Frame -> Laser_Frame Transform -->
+  <node        name           = "base_laser_link"
+               pkg            = "tf"
+               type           = "static_transform_publisher"
+               args           = "0.2 0.0 0.1 0.0 0.0 0.0 base_link laser 100"/>
+  <!-- Base_Frame -> Odom_Frame Transform -->
+  <node        name           = "base_odom_link"
+               pkg            = "tf"
+               type           = "static_transform_publisher"
+               args           = "0.0 0.0 0.0 0.0 0.0 0.0 base_link odom 100"/>
+</launch>

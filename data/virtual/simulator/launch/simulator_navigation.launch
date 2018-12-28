@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<!--
+2018 Varundev Suresh Babu (University of Virginia)
+            MIT License
+-->
+
+<launch>
+  <!-- Launch gazebo with racecar and bringup controllers -->
+  <include     file           = "$(find racecar_gazebo)/launch/racecar.launch"/>
+  <!-- Bringup rviz with navigation parameters -->
+  <include     file           = "$(find console)/launch/navigation/navigation.launch"/>
+  <!-- Launch navigation nodes -->
+  <include     file           = "$(find platform)/launch/navigation/navigation.launch"/>
+</launch>

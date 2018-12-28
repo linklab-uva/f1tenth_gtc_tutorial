@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<!--
+2018 Varundev Suresh Babu (University of Virginia)
+            MIT License
+-->
+
+<launch>
+  <node        name           = "pid_wall_follower"
+               pkg            = "simulator"
+               type           = "pid_error.py"
+               output         = "screen"/>
+  <node        name           = "heading_generator"
+               pkg            = "simulator"
+               type           = "control.py"/>
+</launch>

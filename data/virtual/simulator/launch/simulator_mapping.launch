@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<!--
+2018 Varundev Suresh Babu (University of Virginia)
+            MIT License
+-->
+
+<launch>
+  <!-- Launch gazebo with racecar and bringup controllers -->
+  <include     file           = "$(find racecar_gazebo)/launch/racecar.launch"/>
+  <!-- Bringup teleop node -->
+  <include     file           = "$(find console)/launch/teleop/keyboard_teleop.launch"/>
+  <!-- Bringup rviz with mapping parameters -->
+  <include     file           = "$(find console)/launch/mapping/mapping.launch"/>
+  <!-- Launch mapping nodes -->
+  <include     file           = "$(find platform)/launch/mapping/mapping.launch"/>
+</launch>

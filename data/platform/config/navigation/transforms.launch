@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<!--
+2018 Varundev Suresh Babu (University of Virginia)
+                MIT License
+-->
+
+<launch>
+  <!-- Base_Frame -> Laser_Frame Transform -->
+  <node        name           = "base_laser_link"
+               pkg            = "tf"
+               type           = "static_transform_publisher"
+               args           = "0.2 0.0 0.1 0.0 0.0 0.0 base_link laser 20"/>
+  <!-- Base_Footprint -> Base_Frame Transform -->
+  <!--
+  <node        name           = "base_base_link"
+               pkg            = "tf"
+               type           = "static_transform_publisher"
+               args           = "0.0 0.0 0.0 0.0 0.0 0.0 base_footprint base_link 20"/>
+                                                                                    -->
+  <!-- Map -> Odom (disable for gazebo_sim)-->
+  <!--
+  <node        name           = "map_odom_link"
+               pkg            = "tf"
+               type           = "static_transform_publisher"
+               args           = "0.0 0.0 0.0 0.0 0.0 0.0 map odom 20"/>
+                                                                    -->
+  <!-- Map -> Base_Link Transform-->
+  <!--
+  <node        name           = "odom_base_link"
+               pkg            = "tf"
+               type           = "static_transform_publisher"
+               args           = "0.0 0.0 0.0 0.0 0.0 0.0 odom base_link 20"/>
+                                                                          -->
+</launch>
