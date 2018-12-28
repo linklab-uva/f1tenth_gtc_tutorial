@@ -65,10 +65,10 @@ The 'tools' folder contains scripts that help in installing the F1/10 package an
 The option for <your_preferred_ROS_distribution> can be found the following table based on your current Ubuntu version:
 
 | Ubuntu version |  ROS version |
-|----------------|--------------|
-| 14.X           |       indigo |
-| 16.X           |      kinetic |
-| 18.X           |      melodic |
+|:--------------:|:------------:|
+| 14.04 (Trusty) |       Indigo |
+| 16.04 (Xenial) |      Kinetic |
+| 18.04 (Bionic) |      Melodic |
 
 ### 1. Full install
 
