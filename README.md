@@ -62,11 +62,18 @@ The 'tools' folder contains scripts that help in installing the F1/10 package an
 
 2. The name of your preferred ROS distribution must also be supplied to the installer. This depends on the Ubuntu distribution of your machine and more information is available [here](http://wiki.ros.org/ROS/Installation).
 
+The option for <your_preferred_ROS_distribution> can be found the following table based on your current Ubuntu version:
+| Ubuntu version   |  ROS version |
+|----------:|------:|
+| 14.X | indigo |
+| 16.X | kinetic |
+| 18.X | melodic | 
+
 ### 1. Full install
 
 This option installs ROS along with the dependent packages necessary to run the F1/10 package locally with full simulator support. To do this, open a terminal and execute
 ```console
-user@computer:$ bash ./tools/install_full.sh <your_workspace_name> <your_prefered_ROS_distribution>
+user@computer:$ bash ./tools/install_full.sh <your_workspace_name> <your_preferred_ROS_distribution>
 ```
 
 ### 1. Install F1/10 package and its dependencies
