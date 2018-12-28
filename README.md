@@ -48,7 +48,7 @@ The testbed contains the following hardware:
 * MPU-9050inertial measurement unit (IMU)
 * Ubiquiti Wifi Pico station access point
 
-Detailed instructions on how to assemble the testbed are available on [website](f1tenth.org)
+Detailed instructions on how to assemble the testbed are available on our [website](f1tenth.org)
 
 ## Installing
 
@@ -81,4 +81,52 @@ user@computer:$ bash ./tools/install_source_with_dependencies.sh <your_workspace
 This option installs only the F1/10 packages. Do this only if you want to experiment with algorithms that are not part of this course. To do this, open a terminal and execute
 ```console
 user@computer:$ bash ./tools/install_source_only.sh <your_workspace_name>
+```
+
+## Getting Started
+
+The F1/10 package complements the hardware by emulating its modular properties. The repository has been setup to help the user get started with the simulator out-of-the box. This section provides a quick dive into the three main sections of the tutorial;
+
+The simulation sub-package contains one-line commands that perform these tasks parallelly, but we recommend that first-time users understand the processes before using these commands. If you are already experienced in ROS, the launch files are present under '/simulator/launch' directory.
+
+### Introduction to the F1/10 simulator and basic navigation
+
+```console
+user@computer:$ roslaunch racecar_gazebo racecar.launch
+```
+
+```console
+user@computer:$ roslaunch console keyboard_teleop.launch
+```
+
+### Mapping a closed environment using Hector Mapping
+
+```console
+user@computer:$ roslaunch racecar_gazebo racecar.launch
+```
+
+```console
+user@computer:$ roslaunch console keyboard_teleop.launch
+```
+
+```console
+user@computer:$ roslaunch platform mapping.launch
+```
+
+```console
+user@computer:$ roslaunch console mapping.launch
+```
+
+### Advanced navigation using the TEB local planner
+
+```console
+user@computer:$ roslaunch racecar_gazebo racecar.launch
+```
+
+```console
+user@computer:$ roslaunch platform navigation.launch
+```
+
+```console
+user@computer:$ roslaunch console navigation.launch
 ```
