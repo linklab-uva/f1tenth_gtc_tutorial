@@ -70,6 +70,11 @@ The option for <your_preferred_ROS_distribution> can be found the following tabl
 | 16.04 (Xenial) |      Kinetic |
 | 18.04 (Bionic) |      Melodic |
 
+You can find this from your console by looking at the data returned from:
+```console
+user@computer:$ lsb_release -a
+```
+
 ### 1. Full install
 
 This option installs ROS along with the dependent packages necessary to run the F1/10 package locally with full simulator support. To do this, open a terminal and execute
