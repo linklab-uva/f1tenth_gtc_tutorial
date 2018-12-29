@@ -1,5 +1,5 @@
 <p align="center">
-![alt text](assets/images/f110logo.png "f1tenth GTC")
+<img src="assets/images/f110logo.png">
 # F1/10 Autonomous Racing
 ## Instructor led training
 </p>
