@@ -82,13 +82,11 @@ user@computer:$ sudo apt-get -y install ros-melodic-serial*
 The * trailing the commands install the packages using the same name that are some times dependent on the master package.
 
 2. Install mapping and core package using catkin_make
-With all the dependencies installed, you can now install the F1/10 core package (with the simulator) and the rest of the packages necessary to run the nodes locally.
+With all the dependencies installed, you can now install the F1/10 core package (with the simulator) and the rest of the packages necessary to run the nodes locally. Open a new terminal and execute:
 
 ```console
-user@computer:$ cd catkin_ws/src/
-user@computer:$ git clone https://github.com/varundevsukhil/f1tenth.git
-user@computer:$ git clone https://github.com/tu-darmstadt-ros-pkg/hector_slam.git
-user@computer:$ git clone https://github.com/mit-racecar/vesc.git
+user@computer:$ git clone https://github.com/linklab-uva/f1tenth_gtc_tutorial
+user@computer:$ ln -s ~/f1tenth_gtc_tutorial/src/ ~/catkin_ws/src/
 user@computer:$ cd ~/catkin_ws
 user@computer:$ catkin_make install
 ```
