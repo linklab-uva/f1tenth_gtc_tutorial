@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<!--
+2018 Varundev Suresh Babu (University of Virginia)
+                MIT License
+-->
+
+<launch>
+  <!-- Bringup RVIZ with default parameters -->
+  <node        pkg            = "rviz"
+               type           = "rviz"
+               name           = "rviz"
+               args           = "-d $(find console)/config/display/mapping/mapping.rviz"/>
+</launch>

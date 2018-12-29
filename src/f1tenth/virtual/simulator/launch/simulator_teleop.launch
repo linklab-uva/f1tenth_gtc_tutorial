@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<!--
+2018 Varundev Suresh Babu (University of Virginia)
+            MIT License
+-->
+
+<launch>
+  <!-- Bringup teleop node -->
+  <include     file           = "$(find console)/launch/teleop/joy_teleop.launch"/>
+  <!-- Launch gazebo with racecar and bringup controllers -->
+  <include     file           = "$(find racecar_gazebo)/launch/racecar.launch"/>
+</launch>

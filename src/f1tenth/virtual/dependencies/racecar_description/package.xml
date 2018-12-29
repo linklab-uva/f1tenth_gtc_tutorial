@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+
+<!--
+2018 Varundev Suresh Babu (University of Virginia)
+                MIT License
+-->
+
+<package>
+  <name>racecar_description</name>
+  <version>0.1.0</version>
+  <description>
+    The F1/10 Simulation Package
+  </description>
+
+  <maintainer email="varundev@virginia.edu">Varundev Suresh Babu</maintainer>
+  <license>MIT</license>
+  <author email="varundev@virginia.edu">Varundev Suresh Babu</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>tf</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+
+  <run_depend>tf</run_depend>
+  <run_depend>rospy</run_depend>
+  <run_depend>sensor_msgs</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>geometry_msgs</run_depend>
+</package>

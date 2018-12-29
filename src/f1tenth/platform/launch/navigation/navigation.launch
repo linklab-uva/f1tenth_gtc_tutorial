@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+
+<!--
+2018 Varundev Suresh Babu (University of Virginia)
+            MIT License
+-->
+
+<launch>
+  <!-- Global Parameters -->
+  <param       name           = "/use_sim_time"
+               value          = "true"/>
+               <!-- Maps -->
+  <node        name           = "map_server"
+               pkg            = "map_server"
+               type           = "map_server"
+               args           = "$(find platform)/config/mapping/maps/demo.yaml"
+               output         = "screen">
+  <param       name           = "frame_id"
+               value          = "map"/> </node>
+  <!-- Stage Simulator -->
+  <!--
+  <node        pkg            = "stage_ros"
+               type           = "stageros"
+               name           = "stageros"
+               args           = "$(find platform)/stage/maze_carlike.world">
+  <remap       from           = "base_scan"
+               to             = "scan"/> </node>
+                                             -->
+  <!-- Broadcast navigation transforms -->
+  <include     file           = "$(find platform)/config/navigation/transforms.launch"/>
+  <!-- Adaptive Monte Carlo Localization -->
+  <node        pkg            = "amcl"
+               type           = "amcl"
+               name           = "amcl"
+               output         = "screen">
+  <rosparam    file           = "$(find platform)/config/navigation/amcl_params.yaml"
+               command        = "load"/>
+  <param       name           = "initial_pose_x"
+               value          = "0.0"/>
+  <param       name           = "initial_pose_y"
+               value          = "0.0"/>
+  <param       name           = "initial_pose_a"
+               value          = "0.0"/> </node>
+  <!--
+  <include     file           = "$(find amcl)/examples/amcl_diff.launch"/>
+                                                                       -->
+  <!-- Navigation -->
+  <node        pkg            = "move_base"
+               type           = "move_base"
+               respawn        = "false"
+               name           = "move_base"
+               output         = "screen">
+  <rosparam    file           = "$(find platform)/config/navigation/costmap_common_params.yaml"
+               command        = "load"
+               ns             = "global_costmap"/>
+  <rosparam    file           = "$(find platform)/config/navigation/costmap_common_params.yaml"
+               command        = "load"
+               ns             = "local_costmap"/>
+  <rosparam    file           = "$(find platform)/config/navigation/local_costmap_params.yaml"
+               command        = "load"/>
+  <rosparam    file           = "$(find platform)/config/navigation/global_costmap_params.yaml"
+               command        = "load"/>
+  <rosparam    file           = "$(find platform)/config/navigation/teb_local_planner_params.yaml"
+               command        = "load"/>
+  <param       name           = "base_global_planner"
+               value          = "global_planner/GlobalPlanner"/>
+  <param       name           = "planner_frequency"
+               value          = "1.0"/>
+  <param       name           = "planner_patience"
+               value          = "5.0"/>
+  <param       name           = "base_local_planner"
+               value          = "teb_local_planner/TebLocalPlannerROS"/>
+  <param       name           = "controller_frequency"
+               value          = "20.0"/>
+  <param       name           = "controller_patience"
+               value          = "15.0"/>
+  <param       name           = "clearing_rotation_allowed"
+               value          = "false"/> </node>
+</launch>
