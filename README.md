@@ -51,45 +51,49 @@ The testbed contains the following hardware:
 Detailed instructions on how to assemble the testbed are available on our [website](f1tenth.org)
 
 ## Installing
+Based on the current configuration of your computer, you will have to install more than just the F1/10 package
 
-Based on the current configuration of your computer, you have three options to install the F1/10 package
+### 1. Install ROS
+If your computer dos not have ROS already installed, you can do so by following the instructions [here](http://wiki.ros.org/melodic/Installation/Ubuntu). Choose the 'desktop-full' install option as we will use the navigation libraries and visualization tools.
+### 2. Create local workspace
 
-### Basic options
+You have to create a local directory to contain the F1/10 and its dependent packages and permanently source them. To do this, open a new terminal and do the following:
 
-The 'tools' folder contains scripts that help in installing the F1/10 package and all of its dependencies. You have to provide some parameters necessary to do this on your machine including
-
-1. The name of your workspace, hereby referred to as <your_workspace_name>. This directory will be created in your machines '~/' path and will contain  all the nodes necessary to run the F1/10 package. The default value for this is 'catkin_ws'
-
-2. The name of your preferred ROS distribution must also be supplied to the installer. This depends on the Ubuntu distribution of your machine and more information is available [here](http://wiki.ros.org/ROS/Installation).
-
-The option for <your_preferred_ROS_distribution> can be found the following table based on your current Ubuntu version:
-
-| Ubuntu version |  ROS version |
-|:--------------:|:------------:|
-| 14.04 (Trusty) |       Indigo |
-| 16.04 (Xenial) |      Kinetic |
-| 18.04 (Bionic) |      Melodic |
-
-You can find this from your console by looking at the data returned from:
 ```console
-user@computer:$ lsb_release -a
+user@computer:$ mkdir -p catkin_ws/src/
+user@computer:$ cd catkin_ws/src/
+user@computer:$ catkin_init_workspace
+user@computer:$ cd ~/catkin_ws
+user@computer:$ catkin_make
+user@computer:$ echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
 ```
 
-### 1. Full install
+### 3. Install F1/10 package and its dependencies
 
-This option installs ROS along with the dependent packages necessary to run the F1/10 package locally with full simulator support. To do this, open a terminal and execute
+1. Install navigation libraries using apt-get
+You have to install certain navigation libraries and some additional packages to support the simulator. You can do this by opening a new terminal and typing:
 ```console
-user@computer:$ bash ./tools/install_full.sh <your_workspace_name> <your_preferred_ROS_distribution>
+user@computer:$ sudo apt-get -y install ros-melodic-control*
+user@computer:$ sudo apt-get -y install ros-melodic-gazebo*
+user@computer:$ sudo apt-get -y install ros-melodic-navigation*
+user@computer:$ sudo apt-get -y install ros-melodic-teb-local-planner*
+user@computer:$ sudo apt-get -y install ros-melodic-serial*
+```
+The * trailing the commands install the packages using the same name that are some times dependent on the master package.
+
+2. Install mapping and core package using catkin_make
+With all the dependencies installed, you can now install the F1/10 core package (with the simulator) and the rest of the packages necessary to run the nodes locally.
+
+```console
+user@computer:$ cd catkin_ws/src/
+user@computer:$ git clone https://github.com/linklab-uva/f1tenth.git
+user@computer:$ git clone https://github.com/tu-darmstadt-ros-pkg/hector_slam.git
+user@computer:$ git clone https://github.com/mit-racecar/vesc.git
+user@computer:$ cd ~/catkin_ws
+user@computer:$ catkin_make install
 ```
 
-### 2. Install F1/10 package and its dependencies
-
-This option installs the F1/10 package and the ROS navigation packages necessary to run locally on your machine. To do this, open a terminal and execute
-```console
-user@computer:$ bash ./tools/install_source_with_dependencies.sh <your_workspace_name> <your_prefered_ROS_distribution>
-```
-
-### 3. Install only the F1/10 package
+### 4. Install only the F1/10 package
 
 This option installs only the F1/10 packages. Do this only if you want to experiment with algorithms that are not part of this course. To do this, open a terminal and execute
 ```console
