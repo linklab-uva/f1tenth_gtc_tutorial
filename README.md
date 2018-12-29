@@ -75,7 +75,7 @@ You have to install certain navigation libraries and some additional packages to
 ```console
 user@computer:$ sudo apt-get -y install ros-melodic-control*
 user@computer:$ sudo apt-get -y install ros-melodic-gazebo*
-user@computer:$ sudo apt-get -y install ros-melodic-navigation*
+user@computer:$ sudo apt-get -y install ros-melodic-navigation
 user@computer:$ sudo apt-get -y install ros-melodic-teb-local-planner*
 user@computer:$ sudo apt-get -y install ros-melodic-serial*
 ```
@@ -104,19 +104,32 @@ The F1/10 simulator is based on the work done by the MIT-Racecar team with some 
 user@computer:$ roslaunch racecar_gazebo racecar.launch
 ```
 
-The F1/10 console package provides you with the option of using either keyboard control or joystick control. The package is built around the Logitech F710 game controller or the standard English(US) keyboard. IF you do not have the F710, you can use any other controller supported by thr ROS joy-node and change the axis-mapping or just use the keyboard control by using the following command.
+The F1/10 console package provides you with the option of using either keyboard control or joystick control. The package is built around the Logitech F710 game controller or the standard English(US) keyboard. IF you do not have the F710, you can use any other controller supported by the ROS joy-node and change the axis-mapping or just use the keyboard control by using the following command.
 ```console
 user@computer:$ roslaunch console keyboard_teleop.launch
 ```
 
 ### Basic navigation principles (follow the inner wall)
 
+The purpose of this demonstration is to show the basic capabilities of the F1/10 platform. If you already have the assembled F1/10 hardware, you can skip the first part and proceed directly to the second part. You may need to tune some basic parameters in the controller depending on the kind of chassis you are using.
+
+First, bring up the simulator using the following command. This command launches the simulator and spawns the F1/10 racecar closer to the inner wall for better performance of the wall-following algorithm.
+
 ```console
 user@computer:$ roslaunch racecar_gazebo racecar_simplerun.launch
 ```
 
+Bring up the wall-following nodes using the following command. You should notice the F1/10 racecar moving immediately.
+
 ```console
 user@computer:$ roslaunch simulator simple_run.launch
+```
+
+To adjust the distance from the wall, you can change the values in the '/src/f1tenth/virtual/simulator/nodes/simple_run/pid_error.py' like the following:
+
+```python
+DESIRED_DISTANCE_RIGHT = 1.0 # distance from right wall in meters
+DESIRED_DISTANCE_LEFT = 0.8 # distance from left wall in meters
 ```
 
 ### Mapping a closed environment using Hector Mapping
@@ -141,9 +154,9 @@ ln 5: <arg name="base_frame" default="base_link"/>
 
 2. Change the value for *odom_frame*
 ```xml
-ln 17: <param name="odom_frame" value="$(arg odom_frame)" />
+ln 17: <param name="odom_frame" value="$(arg odom_frame)"/>
 to
-ln 17: <param name="odom_frame" value="$(arg base_frame)" />
+ln 17: <param name="odom_frame" value="$(arg base_frame)"/>
 ```
 
 ```console
