@@ -73,11 +73,12 @@ user@computer:$ echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
 1. Install navigation libraries using apt-get
 You have to install certain navigation libraries and some additional packages to support the simulator. You can do this by opening a new terminal and typing:
 ```console
-user@computer:$ sudo apt-get -y install ros-melodic-control*
-user@computer:$ sudo apt-get -y install ros-melodic-gazebo*
+user@computer:$ sudo apt-get -y install ros-melodic-ros-control
+user@computer:$ sudo apt-get -y install ros-melodic-gazebo-ros-control
+user@computer:$ sudo apt-get -y install ros-melodic-ros-controllers
 user@computer:$ sudo apt-get -y install ros-melodic-navigation
+user@computer:$ sudo apt-get -y install ros-melodic-ackermann-msgs
 user@computer:$ sudo apt-get -y install ros-melodic-teb-local-planner*
-user@computer:$ sudo apt-get -y install ros-melodic-serial*
 ```
 The * trailing the commands install the packages using the same name that are some times dependent on the master package.
 
