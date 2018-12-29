@@ -1,6 +1,4 @@
-<p align="center">
-<img src="assets/images/f110logo.png">
-</p>
+![alt text](assets/images/f110logo.png "f1tenth GTC")
 # F1/10 Autonomous Racing
 ## Instructor led training
 ## ![alt text](assets/images/uva.jpg "f1tenth-UVA") Nvidia GTC 2019 | University of Virginia  ![alt text](assets/images/nvidia-logo.png "f1tenth-GTC")
