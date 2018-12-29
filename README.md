@@ -135,18 +135,14 @@ Make the following changes to this file:
 1. Change the name of *base_frame*
 ```xml
 ln 5: <arg name="base_frame" default="base_footprint"/>
-```
 to
-```xml
 ln 5: <arg name="base_frame" default="base_link"/>
 ```
 
 2. Change the value for *odom_frame*
 ```xml
 ln 17: <param name="odom_frame" value="$(arg odom_frame)" />
-```
 to
-```xml
 ln 17: <param name="odom_frame" value="$(arg base_frame)" />
 ```
 
