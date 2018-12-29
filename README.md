@@ -121,6 +121,35 @@ user@computer:$ roslaunch simulator simple_run.launch
 
 ### Mapping a closed environment using Hector Mapping
 
+It is important that you do not have multiple installations of hector_slam package. ROS will not build multiple packages with the same name, but sometimes it can overlook existing installations if your workspace is not sourced.
+
+Before we proceed to mapping, we have to make some changes to the hector_slam launch files to make it work with the F1/10 package. To do this execute the following:
+
+```console
+user@computer:$ roscd hector_mapping/launch/
+user@computer:$ gedit hector_mapping.launch
+```
+
+Make the following changes to this file:
+
+1. Change the name of *base_frame*
+```xml
+ln 5: <arg name="base_frame" default="base_footprint"/>
+```
+to
+```xml
+ln 5: <arg name="base_frame" default="base_link"/>
+```
+
+2. Change the value for *odom_frame*
+```xml
+ln 17: <param name="odom_frame" value="$(arg odom_frame)" />
+```
+to
+```xml
+ln 17: <param name="odom_frame" value="$(arg base_frame)" />
+```
+
 ```console
 user@computer:$ roslaunch racecar_gazebo racecar.launch
 ```
