@@ -161,9 +161,15 @@ to
 ln 17: <param name="odom_frame" value="$(arg base_frame)"/>
 ```
 
+The *hector_mapping* package launches with some default parameters and the changes made by the steps above enable us to use this package with our platform.
+
+Once you have completed all the steps above, it is time to explore the simulated world and create a 2D map of the world. For this, you should first bring up the simulator with the default 'racecar.launch' file. DO the following:
+
 ```console
 user@computer:$ roslaunch racecar_gazebo racecar.launch
 ```
+
+Once the simulator GUI appears, check the console to see that there are no errors. This is important because although the simulator would seem to be working properly, some of the nodes necessary to control the F1/10 racecar might have not launched. If the console output has no red lines, you are safe to proceed to the next step. Otherwise use Ctrl-C to kill the simulator and relaunch the entire package. The simulator has to shutdown clearly, otherwise the errors will propagate again.
 
 ```console
 user@computer:$ roslaunch console keyboard_teleop.launch
