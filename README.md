@@ -93,20 +93,6 @@ user@computer:$ cd ~/catkin_ws
 user@computer:$ catkin_make install
 ```
 
-### 4. Install only the F1/10 package
-
-This option installs only the F1/10 packages. Do this only if you want to experiment with algorithms that are not part of this course. To do this, open a terminal and execute
-```console
-user@computer:$ bash ./tools/install_source_only.sh <your_workspace_name>
-```
-
-### Example
-
-If you want to install only the F1/10 package and its dependencies, and your computer runs Ubuntu 18.04 and ROS-Melodic with a default workspace under catkin_ws, you would have to execute:
-```console
-user@computer:$ bash ./tools/install_source_with_dependencies.sh catkin_ws melodic
-```
-
 ## Getting Started
 
 The F1/10 package complements the hardware by emulating its modular properties. The repository has been setup to help the user get started with the simulator out-of-the box. This section provides a quick dive into the three main sections of the tutorial;
