@@ -86,7 +86,7 @@ With all the dependencies installed, you can now install the F1/10 core package 
 
 ```console
 user@computer:$ cd catkin_ws/src/
-user@computer:$ git clone https://github.com/linklab-uva/f1tenth.git
+user@computer:$ git clone https://github.com/varundevsukhil/f1tenth.git
 user@computer:$ git clone https://github.com/tu-darmstadt-ros-pkg/hector_slam.git
 user@computer:$ git clone https://github.com/mit-racecar/vesc.git
 user@computer:$ cd ~/catkin_ws
@@ -101,10 +101,12 @@ The simulation sub-package contains one-line commands that perform these tasks p
 
 ### Introduction to the F1/10 simulator
 
+The F1/10 simulator is based on the work done by the MIT-Racecar team with some added features like the new world map and Gazebo plugins that provide better odometry and control. Bring up the simulator using the following command.
 ```console
 user@computer:$ roslaunch racecar_gazebo racecar.launch
 ```
 
+The F1/10 console package provides you with the option of using either keyboard control or joystick control. The package is built around the Logitech F710 game controller or the standard English(US) keyboard. IF you do not have the F710, you can use any other controller supported by thr ROS joy-node and change the axis-mapping or just use the keyboard control by using the following command.
 ```console
 user@computer:$ roslaunch console keyboard_teleop.launch
 ```
