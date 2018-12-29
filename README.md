@@ -109,7 +109,7 @@ user@computer:$ roslaunch racecar_gazebo racecar.launch
 user@computer:$ roslaunch console keyboard_teleop.launch
 ```
 
-### Basic navigation priciples (follw the inner wall)
+### Basic navigation principles (follow the inner wall)
 
 ```console
 user@computer:$ roslaunch racecar_gazebo racecar_simplerun.launch
