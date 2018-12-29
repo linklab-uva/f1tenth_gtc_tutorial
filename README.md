@@ -99,7 +99,7 @@ The F1/10 package complements the hardware by emulating its modular properties. 
 
 The simulation sub-package contains one-line commands that perform these tasks parallelly, but we recommend that first-time users understand the processes before using these commands. If you are already experienced in ROS, the launch files are present under '/simulator/launch' directory.
 
-### Introduction to the F1/10 simulator and basic navigation
+### Introduction to the F1/10 simulator
 
 ```console
 user@computer:$ roslaunch racecar_gazebo racecar.launch
@@ -107,6 +107,16 @@ user@computer:$ roslaunch racecar_gazebo racecar.launch
 
 ```console
 user@computer:$ roslaunch console keyboard_teleop.launch
+```
+
+### Basic navigation priciples (follw the inner wall)
+
+```console
+user@computer:$ roslaunch racecar_gazebo racecar_simplerun.launch
+```
+
+```console
+user@computer:$ roslaunch simulator simple_run.launch
 ```
 
 ### Mapping a closed environment using Hector Mapping
