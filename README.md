@@ -76,8 +76,9 @@ You have to install certain navigation libraries and some additional packages to
 user@computer:$ sudo apt-get -y install ros-melodic-ros-control
 user@computer:$ sudo apt-get -y install ros-melodic-gazebo-ros-control
 user@computer:$ sudo apt-get -y install ros-melodic-ros-controllers
-user@computer:$ sudo apt-get -y install ros-melodic-navigation
+user@computer:$ sudo apt-get -y install ros-melodic-navigation qt4-default
 user@computer:$ sudo apt-get -y install ros-melodic-ackermann-msgs
+user@computer:$ sudo apt-get -y install ros-melodic-serial
 user@computer:$ sudo apt-get -y install ros-melodic-teb-local-planner*
 ```
 The * trailing the commands install the packages using the same name that are some times dependent on the master package.
