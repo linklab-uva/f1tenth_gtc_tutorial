@@ -97,7 +97,7 @@ The F1/10 package complements the hardware by emulating its modular properties. 
 
 The simulation sub-package contains one-line commands that perform these tasks parallelly, but we recommend that first-time users understand the processes before using these commands. If you are already experienced in ROS, the launch files are present under '/simulator/launch' directory.
 
-### Introduction to the F1/10 simulator
+### The F1/10 simulator
 
 The F1/10 simulator is based on the work done by the MIT-Racecar team with some added features like the new world map and Gazebo plugins that provide better odometry and control. Bring up the simulator using the following command.
 ```console
@@ -109,7 +109,7 @@ The F1/10 console package provides you with the option of using either keyboard 
 user@computer:$ roslaunch console keyboard_teleop.launch
 ```
 
-### Basic navigation principles (follow the inner wall)
+### Tutorial 1: Basic navigation principles (follow the inner wall)
 
 The purpose of this demonstration is to show the basic capabilities of the F1/10 platform. If you already have the assembled F1/10 hardware, you can skip the first part and proceed directly to the second part. You may need to tune some basic parameters in the controller depending on the kind of chassis you are using.
 
@@ -129,10 +129,10 @@ To adjust the distance from the wall, you can change the values in the '/src/f1t
 
 ```python
 DESIRED_DISTANCE_RIGHT = 1.0 # distance from right wall in meters
-DESIRED_DISTANCE_LEFT = 0.8 # distance from left wall in meters
+DESIRED_DISTANCE_LEFT  = 0.8 # distance from left wall in meters
 ```
 
-### Mapping a closed environment using Hector Mapping
+### Tutorial 2: Mapping a closed environment using Hector Mapping
 
 It is important that you do not have multiple installations of hector_slam package. ROS will not build multiple packages with the same name, but sometimes it can overlook existing installations if your workspace is not sourced.
 
@@ -179,7 +179,7 @@ user@computer:$ roslaunch console mapping.launch
 user@computer:$ rosrun map_server map_saver -f <name_for_your_map>
 ```
 
-### Advanced navigation using the TEB local planner
+### Tutorial 3: Advanced navigation using the TEB local planner
 
 ```console
 user@computer:$ roslaunch racecar_gazebo racecar.launch
