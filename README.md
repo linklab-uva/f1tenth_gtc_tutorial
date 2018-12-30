@@ -196,9 +196,13 @@ With the mapping node and the teleop node running, it is time to visualize the d
 user@computer:$ roslaunch console mapping.launch
 ```
 
+Once you have driven around the environment, you should notice that a closed map is generated using the *rviz* visualization tool. It is not necessary to drive the entire loop manually as partial maps are also good enough for the next step. We now proceed to save the map generated using the following command:
+
 ```console
 user@computer:$ rosrun map_server map_saver -f <name_for_your_map>
 ```
+
+You should ow see a map file in your home directory. You can save the map file using any name you choose, but you should keep track of what map you want to use for the next tutorial. The F1/10 package already contains a full standardized map of the environment and will use that map for navigation.
 
 ### Tutorial 3: Advanced navigation using the TEB local planner
 
