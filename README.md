@@ -2,7 +2,7 @@
 <img src="assets/images/title.png">
 </p>
 
-![alt text](assets/images/banner.jpg)
+![](assets/images/banner.jpg)
 
 ### What is F1/10 Autonomous Racing?
 
@@ -101,6 +101,8 @@ The simulation sub-package contains one-line commands that perform these tasks p
 
 ### The F1/10 simulator
 
+![](assets/loop/teleop.gif)
+
 The F1/10 simulator is based on the work done by the MIT-Racecar team with some added features like the new world map and Gazebo plugins that provide better odometry and control. Bring up the simulator using the following command.
 ```console
 user@computer:$ roslaunch racecar_gazebo racecar.launch
@@ -119,6 +121,8 @@ D: Turn right
 NOTE: When using *keyboard_teleop*, always keep the terminal from which the teleop node was initialized running over other screens, otherwise the keyboard data will not be sent to the car.
 
 ### Tutorial 1: Basic navigation principles (follow the inner wall)
+
+![](assets/loop/simple_run.gif)
 
 The purpose of this demonstration is to show the basic capabilities of the F1/10 platform. If you already have the assembled F1/10 hardware, you can skip the first part and proceed directly to the second part. You may need to tune some basic parameters in the controller depending on the kind of chassis you are using.
 
@@ -142,6 +146,8 @@ DESIRED_DISTANCE_LEFT  = 0.8 # distance from left wall in meters
 ```
 
 ### Tutorial 2: Mapping a closed environment using Hector Mapping
+
+![](assets/loop/mapping.gif)
 
 It is important that you do not have multiple installations of hector_slam package. ROS will not build multiple packages with the same name, but sometimes it can overlook existing installations if your workspace is not sourced.
 
@@ -205,6 +211,8 @@ user@computer:$ rosrun map_server map_saver -f <name_for_your_map>
 You should now see a map file in your home directory. You can save the map file using any name you choose, but you should keep track of what map you want to use for the next tutorial. The F1/10 package already contains a full standardized map of the environment and will use that map for navigation.
 
 ### Tutorial 3: Advanced navigation using the TEB local planner
+
+![](assets/loop/navigation.gif)
 
 ```console
 user@computer:$ roslaunch racecar_gazebo racecar.launch
