@@ -214,13 +214,35 @@ You should now see a map file in your home directory. You can save the map file 
 
 ![](assets/loop/navigation.gif)
 
+The F1/10 platform is based on a 1/10 scale RC car with [Ackermann steering](https://en.wikipedia.org/wiki/Ackermann_steering_geometry) and therefore requires a navigation system better suited for its dynamics. For this, we chose the official ROS package for [TEB local planner](http://wiki.ros.org/teb_local_planner). The follow demonstration shows how this navigation stack works.
+
+First, bring up the simulator using the following command in a new terminal.
+
 ```console
 user@computer:$ roslaunch racecar_gazebo racecar.launch
 ```
 
+Next, launch the navigation stack. The following command must be entered in a new terminal and it launches several nodes including:
+
+```console
+navigation
+    |
+    |-----> AMCL (Adaptive Monte Carlo Localization)
+    |
+    |-----> Global planner based on global costmap
+    |
+    |-----> Local planner based on local costmap
+    |
+    |-----> Robot controller
+```
+
+A successful launch will not produce any red lines in the terminal window. The four processes launched with this command are meant to sequentially localize the robot based on it's initial pose in the know map and keep track of the robot as it moves in the map. The route planners generate trajectories for the robot to travel from it's current location to the goal. Finally, the robot controller translates the plan into action.
+
 ```console
 user@computer:$ roslaunch platform navigation.launch
 ```
+
+As with mapping, the F1/10 package contains an *rviz* configuration file that launches the visualization window with parameters necessary for navigation. You can bring up this window by entering the following command in a new terminal. Once the GUI is launched, you can use the 2D nav goal option and click on any point within the map to send a goal to the robot and observe the robot achieve its objectives.
 
 ```console
 user@computer:$ roslaunch console navigation.launch
