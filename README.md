@@ -178,13 +178,19 @@ user@computer:$ roslaunch racecar_gazebo racecar.launch
 
 Once the simulator GUI appears, check the console to see that there are no errors. This is important because although the simulator would seem to be working properly, some of the nodes necessary to control the F1/10 racecar might have not launched. If the console output has no red lines, you are safe to proceed to the next step. Otherwise use Ctrl-C to kill the simulator and relaunch the entire package. The simulator has to shutdown clearly, otherwise the errors will propagate again.
 
+Now it is time to launch the *keyboard_teleop* node (or *joystick_teleop*, if you have a compatible joystick). We will need this node to manually drive the car around the environment so that the mapping nodes can collect LaserScan data and build the map. Open a new terminal and launch the teleop node:
+
 ```console
 user@computer:$ roslaunch console keyboard_teleop.launch
 ```
 
+Now it is time to launch the mapping nodes on the racecar. We will use *hector_mapping* to accomplish this by running the following command in a new terminal. Read more about *hector_mapping* and the ROS Hector SLAM package [here](http://wiki.ros.org/hector_slam).
+
 ```console
 user@computer:$ roslaunch platform mapping.launch
 ```
+
+With the mapping node and the teleop node running, it is time to visualize the data. For this we use the ROS inbuilt visualization tool called *rviz*. The F1/10 package contains an *rviz* configuration file that opens up the correct parameters to visualize mapping data. You can take advantage of this configuration file by running the following command:
 
 ```console
 user@computer:$ roslaunch console mapping.launch
