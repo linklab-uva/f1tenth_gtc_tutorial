@@ -110,6 +110,13 @@ The F1/10 console package provides you with the option of using either keyboard 
 ```console
 user@computer:$ roslaunch console keyboard_teleop.launch
 ```
+Keyboard control in this package follows the WASD pattern:
+W: Move forward
+S: Move reverse
+A: Turn left
+D: Turn right
+
+NOTE: When using *keyboard_teleop*, always keep the terminal from which the teleop node was initialized running over other screens, otherwise the keyboard data will not be sent to the car.
 
 ### Tutorial 1: Basic navigation principles (follow the inner wall)
 
@@ -142,7 +149,7 @@ Before we proceed to mapping, we have to make some changes to the hector_slam la
 
 ```console
 user@computer:$ roscd hector_mapping/launch/
-user@computer:$ gedit hector_mapping.launch
+user@computer:$ gedit mapping_default.launch
 ```
 
 Make the following changes to this file:
