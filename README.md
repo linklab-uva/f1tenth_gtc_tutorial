@@ -50,14 +50,17 @@ The testbed contains the following hardware:
 
 Detailed instructions on how to assemble the testbed are available on our [website](f1tenth.org)
 
-## Installing
-Based on the current configuration of your computer, you will have to install more than just the F1/10 package
+## Installation Steps
+The instructions below are for Ubuntu 18.04 LTS Bionic and ROS Melodic Morenia.
+if using a different Linux/ROS setup please use the corresponding ROS version instead of the melodic commands below. 
 
-### 1. Install ROS
+### 1. Install Robot Operating System (ROS)
 If your computer dos not have ROS already installed, you can do so by following the instructions [here](http://wiki.ros.org/melodic/Installation/Ubuntu). Choose the 'desktop-full' install option as we will use the navigation libraries and visualization tools.
-### 2. Create local workspace
 
-You have to create a local directory to contain the F1/10 and its dependent packages and permanently source them. To do this, open a new terminal and do the following:
+### 2. Create a ROS workspace
+
+You have to create a local directory to contain the F1/10 and its dependent packages and permanently source them. 
+To do this, open a new terminal window and do the following:
 
 ```console
 user@computer:$ mkdir -p catkin_ws/src/
@@ -68,9 +71,9 @@ user@computer:$ catkin_make
 user@computer:$ echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
 ```
 
-### 3. Install F1/10 package and its dependencies
+### 3. Install the F1/10 package and its dependencies
 
-1. Install navigation libraries using apt-get
+1. Install the navigation libraries using apt-get
 You have to install certain navigation libraries and some additional packages to support the simulator. You can do this by opening a new terminal and typing:
 ```console
 user@computer:$ sudo apt-get -y install ros-melodic-ros-control
@@ -83,8 +86,8 @@ user@computer:$ sudo apt-get -y install ros-melodic-teb-local-planner*
 ```
 The * trailing the commands install the packages using the same name that are some times dependent on the master package.
 
-2. Install mapping and core package using catkin_make
-With all the dependencies installed, you can now install the F1/10 core package (with the simulator) and the rest of the packages necessary to run the nodes locally. Open a new terminal and execute:
+2. Install the mapping and core package using catkin_make
+With all the dependencies installed, you can now install the F1/10 core package (with the simulator) and the rest of the packages necessary to run the nodes locally. To do so, open a new terminal and execute:
 
 ```console
 user@computer:$ git clone https://github.com/linklab-uva/f1tenth_gtc_tutorial
@@ -93,22 +96,29 @@ user@computer:$ cd ~/catkin_ws
 user@computer:$ catkin_make install
 ```
 
-## Getting Started
+## Getting Started with F1/10 Turorials
 
-The F1/10 package complements the hardware by emulating its modular properties. The repository has been setup to help the user get started with the simulator out-of-the box. This section provides a quick dive into the three main sections of the tutorial;
+The F1/10 package provides a F1/10 Gazebo Simulator which complements the hardware by emulating its modular properties. The repository has been setup to help the user get started with the simulator out-of-the box. This section provides a quick dive into the three main sections of the tutorial;
 
 The simulation sub-package contains one-line commands that perform these tasks parallelly, but we recommend that first-time users understand the processes before using these commands. If you are already experienced in ROS, the launch files are present under '/simulator/launch' directory.
 
-### The F1/10 simulator
+### Getting familiar with the F1/10 Gazebo simulator
 
 ![](assets/loop/teleop.gif)
 
-The F1/10 simulator is based on the work done by the MIT-Racecar team with some added features like the new world map and Gazebo plugins that provide better odometry and control. Bring up the simulator using the following command.
+The F1/10 Gazebo simulator contains features like the a world map, and Gazebo plugins that provide better odometry and control. This setup utilizes the MIT-Racecar gazebo simulation baseline implementation. 
+To bring up the F1/10 Gazebo simulator using the following command
+
 ```console
 user@computer:$ roslaunch racecar_gazebo racecar.launch
 ```
 
-The F1/10 console package provides you with the option of using either keyboard control or joystick control. The package is built around the Logitech F710 game controller or the standard English(US) keyboard. IF you do not have the F710, you can use any other controller supported by the ROS joy-node and change the axis-mapping or just use the keyboard control by using the following command.
+You should now see the default F1/10 world loaded into Gazebo and see the red F1/10 simulated car with the blue LIDAR rangefiner visualized.
+
+#### Keyboard control [Tele-operation]
+
+The F1/10 console package provides you with the option of using either keyboard control or joystick control. The package is built around the Logitech F710 game controller or the standard English(US) keyboard. IF you do not have the F710, you can use any other controller supported by the ROS joy-node and change the axis-mapping or just use the keyboard control by using the following command:
+
 ```console
 user@computer:$ roslaunch console keyboard_teleop.launch
 ```
@@ -118,13 +128,16 @@ S: Move reverse
 A: Turn left
 D: Turn right
 
-NOTE: When using *keyboard_teleop*, always keep the terminal from which the teleop node was initialized running over other screens, otherwise the keyboard data will not be sent to the car.
+NOTE: When using *keyboard_teleop*, always keep the terminal from which the teleop node was initialized as the active terminal window over other screens, otherwise the keyboard data will not be sent to the car.
+You should now be able to see the car respond to manual control commands - steering, and accelration. 
 
-### Tutorial 1: Basic navigation principles (follow the inner wall)
+### Tutorial 1: Basic navigation principles (wall following)
 
 ![](assets/loop/simple_run.gif)
 
-The purpose of this demonstration is to show the basic capabilities of the F1/10 platform. If you already have the assembled F1/10 hardware, you can skip the first part and proceed directly to the second part. You may need to tune some basic parameters in the controller depending on the kind of chassis you are using.
+The purpose of this demonstration is to show the basic perception, planning, and control capabilities of the F1/10 Gazebo platform.  
+Our goal is to go from manual control to autonomous control on the F1/10 racecar. 
+To do this, we will implement a wall following algorithm. The algorithm will try to track either the inner or the outer walls of the world, and maintsin a fixed distance from them using the LIDAR rangefinder sensor and using Proportional, Integral, and Derivative (PID) control.
 
 First, bring up the simulator using the following command. This command launches the simulator and spawns the F1/10 racecar closer to the inner wall for better performance of the wall-following algorithm.
 
@@ -132,33 +145,35 @@ First, bring up the simulator using the following command. This command launches
 user@computer:$ roslaunch racecar_gazebo racecar_simplerun.launch
 ```
 
-Bring up the wall-following nodes using the following command. You should notice the F1/10 racecar moving immediately.
+Next, Bring up the wall-following ROS nodes using the following command. 
+You should notice the F1/10 racecar moving immediately.
 
 ```console
 user@computer:$ roslaunch simulator simple_run.launch
 ```
 
-To adjust the distance from the wall, you can change the values in the '/src/f1tenth/virtual/simulator/nodes/simple_run/pid_error.py' like the following:
+To adjust the distance from the wall, you can change the values in the '/src/f1tenth/virtual/simulator/nodes/simple_run/pid_error.py' 
+For example, like so :
 
 ```python
 DESIRED_DISTANCE_RIGHT = 1.0 # distance from right wall in meters
 DESIRED_DISTANCE_LEFT  = 0.8 # distance from left wall in meters
 ```
 
-### Tutorial 2: Mapping a closed environment using Hector Mapping
+### Tutorial 2: Simultaneous Localization and Mapping [SLAM] using Hector Mapping
 
 ![](assets/loop/mapping.gif)
 
-It is important that you do not have multiple installations of hector_slam package. ROS will not build multiple packages with the same name, but sometimes it can overlook existing installations if your workspace is not sourced.
+Note: It is important that you do not have multiple installations of hector_slam package. ROS will not build multiple packages with the same name, but sometimes it can overlook existing installations if your workspace is not sourced.
 
-Before we proceed to mapping, we have to make some changes to the hector_slam launch files to make it work with the F1/10 package. To do this execute the following:
+Before we proceed to mapping, we have to make some changes to the hector_slam launch files to make it work with the F1/10 package. To do so, execute the following commands in a new terminal:
 
 ```console
 user@computer:$ roscd hector_mapping/launch/
 user@computer:$ gedit mapping_default.launch
 ```
 
-Make the following changes to this file:
+Make the following changes to the mapping_default.launch file:
 
 1. Change the name of *base_frame*
 ```xml
@@ -176,31 +191,32 @@ ln 17: <param name="odom_frame" value="$(arg base_frame)"/>
 
 The *hector_mapping* package launches with some default parameters and the changes made by the steps above enable us to use this package with our platform.
 
-Once you have completed all the steps above, it is time to explore the simulated world and create a 2D map of the world. For this, you should first bring up the simulator with the default 'racecar.launch' file. DO the following:
+Once you have completed all the steps above, it is time to explore the simulated world and create a 2D map of the world. For this, you should first bring up the simulator with the default 'racecar.launch' file. Do the following:
 
 ```console
 user@computer:$ roslaunch racecar_gazebo racecar.launch
 ```
 
-Once the simulator GUI appears, check the console to see that there are no errors. This is important because although the simulator would seem to be working properly, some of the nodes necessary to control the F1/10 racecar might have not launched. If the console output has no red lines, you are safe to proceed to the next step. Otherwise use Ctrl-C to kill the simulator and relaunch the entire package. The simulator has to shutdown clearly, otherwise the errors will propagate again.
+Once the simulator GUI appears, check the console to verify that there are no errors. This is important because although the simulator would seem to be working properly, some of the nodes necessary to control the F1/10 racecar might have not launched. If the console output has no red lines, you are safe to proceed to the next step. Otherwise use Ctrl-C to kill the simulator and relaunch the entire package. The simulator has to shutdown clearly, otherwise the errors will propagate again.
 
-Now it is time to launch the *keyboard_teleop* node (or *joystick_teleop*, if you have a compatible joystick). We will need this node to manually drive the car around the environment so that the mapping nodes can collect LaserScan data and build the map. Open a new terminal and launch the teleop node:
+Now it is time to launch the *keyboard_teleop* ROS node (or *joystick_teleop*, if you have a compatible joystick). We will use this ROS node to manually drive the car around the environment so that the mapping nodes can collect LaserScan data and build the map. Open a new terminal (different from the one which you used to launch the simulator) and launch the teleop node using:
 
 ```console
 user@computer:$ roslaunch console keyboard_teleop.launch
 ```
 
-Now it is time to launch the mapping nodes on the racecar. We will use *hector_mapping* to accomplish this by running the following command in a new terminal. Read more about *hector_mapping* and the ROS Hector SLAM package [here](http://wiki.ros.org/hector_slam).
+Next, launch the mapping nodes. We will use *hector_mapping* to accomplish this by running the following command in a new terminal. Read more about *hector_mapping* and the ROS Hector SLAM package [here](http://wiki.ros.org/hector_slam).
 
 ```console
 user@computer:$ roslaunch platform mapping.launch
 ```
 
-With the mapping node and the teleop node running, it is time to visualize the data. For this we use the ROS inbuilt visualization tool called *rviz*. The F1/10 package contains an *rviz* configuration file that opens up the correct parameters to visualize mapping data. You can take advantage of this configuration file by running the following command:
+With the mapping node, simulator, and the teleop node running, it is time to visualize the data. For this we use the ROS inbuilt visualization tool called *rviz*. The F1/10 package contains an *rviz* configuration file that opens up the correct parameters to visualize mapping data. You can take advantage of this configuration file by running the following command:
 
 ```console
 user@computer:$ roslaunch console mapping.launch
 ```
+You should now see the initial 2D map built by the car from the current laser scan data in rviz. As you drive the car using teh teleop terminal and the WASD keys, you should see the rviz map getting updated as more parts of the world come into the field of view of the LIDAR. 
 
 Once you have driven around the environment, you should notice that a closed map is generated using the *rviz* visualization tool. It is not necessary to drive the entire loop manually as partial maps are also good enough for the next step. We now proceed to save the map generated using the following command:
 
@@ -247,3 +263,12 @@ As with mapping, the F1/10 package contains an *rviz* configuration file that la
 ```console
 user@computer:$ roslaunch console navigation.launch
 ```
+
+## F1/10 Crew at Univerisity of Virginia
+Instructor: Dr. Madhur Behl
+Assistant Professor
+Computer Science | Systems and Information Engineering
+
+Teaching Assistant: Varundev Sukhil Sureshbabu
+PhD Candidate
+Computer Science
