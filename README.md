@@ -18,9 +18,9 @@ Few things focus the mind and excite the spirit like a competition. In the early
 
 ## Tutorial Summary:
 - F1/10 Gazebo racing simulator
-- Perception - LIDAR, and Camera - in Rviz
+- Perception - LIDAR, and Camera - in *rviz*
 - Simple Navigation - Wall following and PID steering and velocity control
-- Simulataneous Localization and Mapping (SLAM) using Hector SLAM
+- Simultaneous Localization and Mapping (SLAM) using Hector SLAM
 - Building and saving maps with LIDAR scan data
 - Localization using the Adaptive Monte Carlo (AMCL) method
 - Path planning and waypoint navigation using Time-Elastic Band (TEB) local planner.
@@ -52,14 +52,14 @@ Detailed instructions on how to assemble the testbed are available on our [websi
 
 ## Installation Steps
 The instructions below are for Ubuntu 18.04 LTS Bionic and ROS Melodic Morenia.
-if using a different Linux/ROS setup please use the corresponding ROS version instead of the melodic commands below. 
+If using a different Linux/ROS setup please use the corresponding ROS version instead of the melodic commands below.
 
 ### 1. Install Robot Operating System (ROS)
 If your computer dos not have ROS already installed, you can do so by following the instructions [here](http://wiki.ros.org/melodic/Installation/Ubuntu). Choose the 'desktop-full' install option as we will use the navigation libraries and visualization tools.
 
 ### 2. Create a ROS workspace
 
-You have to create a local directory to contain the F1/10 and its dependent packages and permanently source them. 
+You have to create a local directory to contain the F1/10 and its dependent packages and permanently source them.
 To do this, open a new terminal window and do the following:
 
 ```console
@@ -84,7 +84,7 @@ user@computer:$ sudo apt-get -y install ros-melodic-ackermann-msgs
 user@computer:$ sudo apt-get -y install ros-melodic-serial
 user@computer:$ sudo apt-get -y install ros-melodic-teb-local-planner*
 ```
-The * trailing the commands install the packages using the same name that are some times dependent on the master package.
+The * trailing the command install the packages using the same name that are some times dependent on the master package.
 
 2. Install the mapping and core package using catkin_make
 With all the dependencies installed, you can now install the F1/10 core package (with the simulator) and the rest of the packages necessary to run the nodes locally. To do so, open a new terminal and execute:
@@ -96,7 +96,7 @@ user@computer:$ cd ~/catkin_ws
 user@computer:$ catkin_make install
 ```
 
-## Getting Started with F1/10 Turorials
+## Getting Started with F1/10 Tutorials
 
 The F1/10 package provides a F1/10 Gazebo Simulator which complements the hardware by emulating its modular properties. The repository has been setup to help the user get started with the simulator out-of-the box. This section provides a quick dive into the three main sections of the tutorial;
 
@@ -106,14 +106,14 @@ The simulation sub-package contains one-line commands that perform these tasks p
 
 ![](assets/loop/teleop.gif)
 
-The F1/10 Gazebo simulator contains features like the a world map, and Gazebo plugins that provide better odometry and control. This setup utilizes the MIT-Racecar gazebo simulation baseline implementation. 
+The F1/10 Gazebo simulator contains features like the a world map, and Gazebo plugins that provide better odometry and control. This setup utilizes the MIT-Racecar gazebo simulation baseline implementation.
 To bring up the F1/10 Gazebo simulator using the following command
 
 ```console
 user@computer:$ roslaunch racecar_gazebo racecar.launch
 ```
 
-You should now see the default F1/10 world loaded into Gazebo and see the red F1/10 simulated car with the blue LIDAR rangefiner visualized.
+You should now see the default F1/10 world loaded into Gazebo and see the red F1/10 simulated car with the blue LIDAR rangefinder visualized.
 
 #### Keyboard control [Tele-operation]
 
@@ -129,15 +129,15 @@ A: Turn left
 D: Turn right
 
 NOTE: When using *keyboard_teleop*, always keep the terminal from which the teleop node was initialized as the active terminal window over other screens, otherwise the keyboard data will not be sent to the car.
-You should now be able to see the car respond to manual control commands - steering, and accelration. 
+You should now be able to see the car respond to manual control commands - steering, and accelration.
 
 ### Tutorial 1: Basic navigation principles (wall following)
 
 ![](assets/loop/simple_run.gif)
 
 The purpose of this demonstration is to show the basic perception, planning, and control capabilities of the F1/10 Gazebo platform.  
-Our goal is to go from manual control to autonomous control on the F1/10 racecar. 
-To do this, we will implement a wall following algorithm. The algorithm will try to track either the inner or the outer walls of the world, and maintsin a fixed distance from them using the LIDAR rangefinder sensor and using Proportional, Integral, and Derivative (PID) control.
+Our goal is to go from manual control to autonomous control on the F1/10 racecar.
+To do this, we will implement a wall following algorithm. The algorithm will try to track either the inner or the outer walls of the world, and maintains a fixed distance from them using the LIDAR rangefinder sensor and using Proportional, Integral, and Derivative (PID) control.
 
 First, bring up the simulator using the following command. This command launches the simulator and spawns the F1/10 racecar closer to the inner wall for better performance of the wall-following algorithm.
 
@@ -145,14 +145,14 @@ First, bring up the simulator using the following command. This command launches
 user@computer:$ roslaunch racecar_gazebo racecar_simplerun.launch
 ```
 
-Next, Bring up the wall-following ROS nodes using the following command. 
+Next, Bring up the wall-following ROS nodes using the following command.
 You should notice the F1/10 racecar moving immediately.
 
 ```console
 user@computer:$ roslaunch simulator simple_run.launch
 ```
 
-To adjust the distance from the wall, you can change the values in the '/src/f1tenth/virtual/simulator/nodes/simple_run/pid_error.py' 
+To adjust the distance from the wall, you can change the values in the '/src/f1tenth/virtual/simulator/nodes/simple_run/pid_error.py'
 For example, like so :
 
 ```python
@@ -216,7 +216,7 @@ With the mapping node, simulator, and the teleop node running, it is time to vis
 ```console
 user@computer:$ roslaunch console mapping.launch
 ```
-You should now see the initial 2D map built by the car from the current laser scan data in rviz. As you drive the car using teh teleop terminal and the WASD keys, you should see the rviz map getting updated as more parts of the world come into the field of view of the LIDAR. 
+You should now see the initial 2D map built by the car from the current laser scan data in *rviz*. As you drive the car using the teleop terminal and the WASD keys, you should see the *rviz* map getting updated as more parts of the world come into the field of view of the LIDAR.
 
 Once you have driven around the environment, you should notice that a closed map is generated using the *rviz* visualization tool. It is not necessary to drive the entire loop manually as partial maps are also good enough for the next step. We now proceed to save the map generated using the following command:
 
@@ -245,11 +245,11 @@ navigation
     |
     |-----> AMCL (Adaptive Monte Carlo Localization)
     |
-    |-----> Global planner based on global costmap
+    |-----> global planner based on global costmap
     |
-    |-----> Local planner based on local costmap
+    |-----> local planner based on local costmap
     |
-    |-----> Robot controller
+    |-----> robot controller
 ```
 
 A successful launch will not produce any red lines in the terminal window. The four processes launched with this command are meant to sequentially localize the robot based on it's initial pose in the know map and keep track of the robot as it moves in the map. The route planners generate trajectories for the robot to travel from it's current location to the goal. Finally, the robot controller translates the plan into action.
@@ -272,7 +272,7 @@ Computer Science | Systems and Information Engineering\
 madhur.behl@virginia.edu
 
 Teaching Assistant:\
-Varundev Sukhil Sureshbabu\
+Varundev Suresh Babu\
 PhD Candidate\
 Computer Science\
 varundev@virginia.edu
