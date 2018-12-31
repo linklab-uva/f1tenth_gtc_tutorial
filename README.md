@@ -265,10 +265,12 @@ user@computer:$ roslaunch console navigation.launch
 ```
 
 ## F1/10 Crew at Univerisity of Virginia
-Instructor: Dr. Madhur Behl
-Assistant Professor
-Computer Science | Systems and Information Engineering
+Instructor: Dr. Madhur Behl\
+Assistant Professor\
+Computer Science | Systems and Information Engineering\
+madhur.behl@virginia.edu
 
-Teaching Assistant: Varundev Sukhil Sureshbabu
-PhD Candidate
-Computer Science
+Teaching Assistant: Varundev Sukhil Sureshbabu\
+PhD Candidate\
+Computer Science\
+varundev@virginia.edu
