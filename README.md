@@ -4,6 +4,18 @@
 
 ![](assets/images/banner.jpg)
 
+### Quick Start:
+
+Run the f1tenth docker container and open port `6080`
+
+```
+docker run -it --rm -p 6080:80 madhurbehl/f1tenth
+```
+
+Then simply browse http://127.0.0.1:6080/ </br>
+Then follow the tutorials in the [Getting Started](## Getting Started with F1/10 Tutorials) section below. </br>
+[DockerHub Link](https://hub.docker.com/r/madhurbehl/f1tenth)
+
 ### What is F1/10 Autonomous Racing?
 
 F1/10 is an international autonomous racing competition which exposes the participants to the foundations of perception, planning and control in a fun, and challenging environment. Participating teams race vehicles with similar hardware specification and try to outsmart, and outpace each other in a battle of algorithms. We’re bringing together two dozen of the top research labs and tech institutions from around the world who have built F1/10 till date.
@@ -51,6 +63,35 @@ The testbed contains the following hardware:
 Detailed instructions on how to assemble the testbed are available on our [website](f1tenth.org)
 
 ## Installation Steps
+
+There are 2 ways to install the files needed for this tutorial.
+
+1. Use the `f1tenth` docker image. [Jump to instructions](### Using the `f1tenth` docker image:)
+2. Use a Ubuntu 16.04 (Xenial) or 18.04 (Bionic) with the correct version of ROS. [Jump to instructions](### Installing and building from source on Ubuntu:)
+
+### Using the `f1tenth` docker image:
+
+The easist and fasted way to get started with the tutorials is to install docker and spin a container from the `f1tenth` docker image.
+
+For this you will need to install Docker on your computer. If you have used Docker before this step should be straight forward, otherwise check [this link](https://www.docker.com/what-docker) for more information about it.
+
+  - Installation's instructions for Ubuntu can be found [[HERE]](https://docs.docker.com/engine/installation/linux/ubuntu/)
+  - Installation's instructions for Windows can be found [[HERE]](https://docs.docker.com/docker-for-windows/install/)
+  - Installation's instructions for MacOS can be found [[HERE]](https://docs.docker.com/docker-for-mac/install/)
+
+After you have Docker installed, running the container should be as easy as typing:
+
+```
+docker run -it --rm -p 6080:80 madhurbehl/f1tenth
+```
+
+Then simply browse http://127.0.0.1:6080/ </br>
+Then follow the tutorials in the [Getting Started](## Getting Started with F1/10 Tutorials) section below. </br>
+There are a few other things you can customize when you launch.
+For more details visit [DockerHub madhurbehl/f1tenth](https://hub.docker.com/r/madhurbehl/f1tenth)
+
+### Installing and building from source on Ubuntu:  
+
 The instructions below are for Ubuntu 18.04 LTS Bionic and ROS Melodic Morenia.
 If using a different Linux/ROS setup please use the corresponding ROS version instead of the melodic commands below.
 
@@ -276,3 +317,7 @@ Varundev Suresh Babu\
 PhD Candidate\
 Computer Science\
 varundev@virginia.edu
+
+### Acknowledgements
+
+We are grateful to our friends and colleagues at the MIT RACECAR project for creating the F1/10 car model for Gazebo, and the F1/10 community for sharing insights on mapping, localization, and TEB-planner. 
