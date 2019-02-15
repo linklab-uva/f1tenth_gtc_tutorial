@@ -13,7 +13,7 @@ docker run -it --rm -p 6080:80 madhurbehl/f1tenth
 ```
 
 Then simply browse http://127.0.0.1:6080/ </br>
-Then follow the tutorials in the [Getting Started](## Getting Started with F1/10 Tutorials) section below. </br>
+Then follow the tutorials in the [Getting Started](https://github.com/linklab-uva/f1tenth_gtc_tutorial#getting-started-with-f110-tutorials) section below. </br>
 [DockerHub Link](https://hub.docker.com/r/madhurbehl/f1tenth)
 
 ### What is F1/10 Autonomous Racing?
@@ -66,8 +66,8 @@ Detailed instructions on how to assemble the testbed are available on our [websi
 
 There are 2 ways to install the files needed for this tutorial.
 
-1. Use the `f1tenth` docker image. [Jump to instructions](### Using the `f1tenth` docker image:)
-2. Use a Ubuntu 16.04 (Xenial) or 18.04 (Bionic) with the correct version of ROS. [Jump to instructions](### Installing and building from source on Ubuntu:)
+1. Use the `f1tenth` docker image. [Jump to instructions](https://github.com/linklab-uva/f1tenth_gtc_tutorial#using-the-f1tenth-docker-image)
+2. Use a Ubuntu 16.04 (Xenial) or 18.04 (Bionic) with the correct version of ROS. [Jump to instructions](https://github.com/linklab-uva/f1tenth_gtc_tutorial#installing-and-building-from-source-on-ubuntu)
 
 ### Using the `f1tenth` docker image:
 
@@ -86,7 +86,7 @@ docker run -it --rm -p 6080:80 madhurbehl/f1tenth
 ```
 
 Then simply browse http://127.0.0.1:6080/ </br>
-Then follow the tutorials in the [Getting Started](## Getting Started with F1/10 Tutorials) section below. </br>
+Then follow the tutorials in the [Getting Started](https://github.com/linklab-uva/f1tenth_gtc_tutorial#getting-started-with-f110-tutorials) section below. </br>
 There are a few other things you can customize when you launch.
 For more details visit [DockerHub madhurbehl/f1tenth](https://hub.docker.com/r/madhurbehl/f1tenth)
 
